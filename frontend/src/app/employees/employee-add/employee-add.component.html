@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<div class="container py-4">
+  <h3>Add New Employee</h3>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" [class.was-validated]="submitted">
+    <div class="form-group mb-3">
+      <label>First Name</label>
+      <input type="text" class="form-control" formControlName="first_name" />
+      <small class="text-danger" *ngIf="employeeForm.get('first_name')?.touched && employeeForm.get('first_name')?.invalid">
+        First name is required.
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Last Name</label>
+      <input type="text" class="form-control" formControlName="last_name" />
+      <small class="text-danger" *ngIf="employeeForm.get('last_name')?.touched && employeeForm.get('last_name')?.invalid">
+        Last name is required</small>
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <small class="text-danger" *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.hasError('required')">
+        Email is required.
+      </small>
+      <small class="text-danger" *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.hasError('email')">
+        Enter a valid email address.
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Gender</label>
+      <select class="form-control" formControlName="gender">
+        <option value="">Select...</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+      <small class="text-danger" *ngIf="employeeForm.get('gender')?.touched && employeeForm.get('gender')?.invalid">
+        Gender is required.
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Designation</label>
+      <input type="text" class="form-control" formControlName="designation" />
+      <small class="text-danger" *ngIf="employeeForm.get('designation')?.touched && employeeForm.get('designation')?.invalid">
+        Designation is required.
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Department</label>
+      <input type="text" class="form-control" formControlName="department" />
+      <small class="text-danger" *ngIf="employeeForm.get('department')?.touched && employeeForm.get('department')?.invalid">
+        Department is required.
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <label>Salary</label>
+      <input type="number" class="form-control" formControlName="salary" />
+      <small class="text-danger" *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.hasError('required')">
+        Salary is required.
+      </small>
+      <small class="text-danger" *ngIf="employeeForm.get('salary')?.touched && employeeForm.get('salary')?.hasError('min')">
+        Minimum salary is 1000.
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Date of Joining</label>
+      <input type="date" class="form-control" formControlName="date_of_joining" />
+      <small class="text-danger" *ngIf="employeeForm.get('date_of_joining')?.touched && employeeForm.get('date_of_joining')?.invalid">
+        Date of joining is required.
+      </small>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Photo URL (optional)</label>
+      <input type="text" class="form-control" formControlName="employee_photo" (input)="updatePreview()" placeholder="https://example.com/photo.jpg" />
+    </div>
+
+    <div class="mb-3" *ngIf="photoPreview">
+      <label>Preview:</label><br />
+      <img [src]="photoPreview" alt="Profile Preview" class="img-thumbnail" style="max-height: 150px;" />
+    </div>
+
+
+    <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Save</button>
+    <button class="btn btn-secondary ms-2" type="button" (click)="router.navigate(['/employees'])">Cancel</button>
+  </form>
+</div>

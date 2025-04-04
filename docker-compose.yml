@@ -1,0 +1,28 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - '4000:4000'
+    environment:
+      - MONGO_URI=mongodb+srv://ppjpang2607:DIVEcQKuaJ1oEI8x@cluster0.hsnmqyg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=mySuperSecretKey
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '4200:80'
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

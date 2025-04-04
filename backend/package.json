@@ -1,0 +1,35 @@
+{
+  "name": "akorede_comp3133_10145976_assignment1",
+  "version": "1.0.0",
+  "description": "## Overview",
+  "homepage": "https://github.com/Kodex-Baba/Akorede_COMP3133_101445976_Assignment1#readme",
+  "bugs": {
+    "url": "https://github.com/Kodex-Baba/Akorede_COMP3133_101445976_Assignment1/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kodex-Baba/Akorede_COMP3133_101445976_Assignment1.git"
+  },
+  "license": "ISC",
+  "author": "Akorede Daniel Osunkoya",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "graphql": "^16.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.0",
+    "nodemon": "^3.1.9"
+  },
+  "keywords": []
+}

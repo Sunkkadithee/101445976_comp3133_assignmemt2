@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="container mt-5 d-flex justify-content-center align-items-center">
+  <div class="card w-100" style="max-width: 600px">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <h3>Employee Details</h3>
+      <button class="btn btn-secondary btn-sm" (click)="goBack()">Go Back</button>
+    </div>
+    <div class="card-body">
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+      <div *ngIf="loading">Loading employee details...</div>
+
+      <div *ngIf="employee">
+        <div class="text-center mb-3" *ngIf="employee.employee_photo">
+          <img [src]="employee.employee_photo" class="img-thumbnail" style="max-height: 150px;"  alt="https://wallpapers.com/images/featured/cat-g9rdx9uk2425fip2.webp"/>
+        </div>
+
+        <p><strong>First Name:</strong> {{ employee.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ employee.last_name }}</p>
+        <p><strong>Email:</strong> {{ employee.email }}</p>
+        <p><strong>Designation:</strong> {{ employee.designation }}</p>
+        <p><strong>Salary:</strong> ${{ employee.salary | number }}</p>
+        <p><strong>Date of Joining:</strong> {{ formatDate(employee.date_of_joining) }}</p>
+        <p><strong>Department:</strong> {{ employee.department }}</p>
+      </div>
+    </div>
+  </div>
+</div>
